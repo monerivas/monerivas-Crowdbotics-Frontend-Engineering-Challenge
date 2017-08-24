@@ -24,11 +24,11 @@ Layout phase.
 
 | TASK                                                                |TIME ESTIMATE TO BE DONE        
 | --------------------------------------------------------------------|:----------------------:| 
-| Organize the components into the grid                               |  20 min                |
-| Fix the components that need to be fixed (make them not scrollable) |  10 min                |
-| Fill the components with the data from the API                      |  20 min                |
-| RIncorporate the color palette                                      |  40 min                |
-| Add the mouseover effect                                            |  2hrs 30min            |
+| Organize the components into the grid                               |  30 min                |
+| Fix the components that need to be fixed (make them not scrollable) |  1 h                   |
+| Fill the components with the data from the API                      |  1 h                   |
+| RIncorporate the color palette                                      |  15 min                |
+| Add the mouseover effect                                            |  15 min                |
 
 
 
