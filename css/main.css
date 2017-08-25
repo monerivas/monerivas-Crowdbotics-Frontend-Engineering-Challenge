@@ -11,13 +11,19 @@
     color: #00b0d9;
     font-weight: 900;
 }
+.fixed{
+    position: fixed;
+}
 /*---End of General Classes---*/
 
-nav {
+.purpleNav {
     height: 15vh;
     background-color:#704fba; 
 }
-
+.searchBar{
+    background-color: white;
+    color: black;
+}
 .titlesNav h5{
     margin: 0;
     font-weight:900;
