@@ -22,7 +22,10 @@
 }
 .searchBar{
     background-color: white;
+}
+.searchBar a{
     color: black;
+
 }
 .titlesNav h5{
     margin: 0;
