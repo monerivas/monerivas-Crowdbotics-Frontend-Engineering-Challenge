@@ -1,0 +1,32 @@
+nav {
+    height: 15vh;
+}
+
+#musicsection{
+   padding-top: 15vh;
+}
+
+#musicsection article{
+    padding-top: 3vh;
+    background-color: #efefef;
+    
+}
+
+#otherCharts{
+    position: fixed;
+    display: inline;
+    padding-bottom: 3vh;
+}
+#otherCharts div.row{
+    margin-bottom: 0;
+}
+
+#otherCharts div.col{
+    margin-bottom: 0;
+}
+
+#otherCharts div.row h6{
+    font-size: 1.5vh;
+    margin: 0;
+
+}
