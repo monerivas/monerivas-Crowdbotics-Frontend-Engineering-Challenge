@@ -1,13 +1,13 @@
 var lodingPage = function () {
-    getingDataPromisses();
+    getingData();
 }
 
 
-/*var getingData= function(){
-    var url= "https://itunes.apple.com/search?term=taylor+swift&limit=200"
-    $.getJSON(url, function(response){
-        var generalData= response.results;
-        generalData.forEach( function(item){
+var getingData = function () {
+    var url = "https://itunes.apple.com/search?term=taylor+swift&limit=25"
+    $.getJSON(url, function (response) {
+        var generalData = response.results;
+        /*generalData.forEach( function(item){
             var trackName= item.trackName;
             var collectionName= item.collectionName;
             var trackId= item.trackId;
@@ -19,65 +19,77 @@ var lodingPage = function () {
             $("#musicContainer").text(collectionName);
             $("#musicContainer").text(trackId);
             $("#musicContainer").text(img);
-        })
+            
+            renderData(generalData);
+        })*/
+        renderData(generalData);
     });
-}*/
-
-/*var getingDataPromisses = function () {
-    $.get(url.results)
-        .then(function (response) {
-            var generalData = response.results;
-            console.log(generalData);
-        })
-}*/
-
-
-/*again*/
-var url = "https://itunes.apple.com/search?term=taylor+swift&limit=1"
-
-var getingDataPromisses = function (url) {
-    return new Promise(function (resolve, reject) {
-        var ajax = new XMLHttpRequest();
-        ajax.open("GET", url);
-        ajax.send();
-        ajax.onreadystatechange = function (data) {
-            if (ajax.readyState == 4) {
-                resolve(JSON.parse(ajax.responseText));
-            }
-        }
-    })
 }
 
-getingDataPromisses(url)
-    .then(function (response) {
-        var generalData = response.results;
-        console.log(generalData);
-        return generalData
-    })
-    .then(function (generalData) {
-        generalData.forEach(function (item) {
-            getingDataPromisses(generalData)
-                .then(function (generalData) {
-                    console.log(generalData + "second then")
-                    printingData(generalData);
-                })
-        })
+var contador =1;
+
+var renderData = function (generalData) {
+    var $ul = $("#musicContainer");
+    
+    generalData.forEach(function (item) {
+        //getting the specific property of the JSON
+        var trackName = item.trackName;
+        var collectionName = item.collectionName;
+        var trackId = item.trackId;
+        var imgTrack = item.artworkUrl100;
+        console.log(trackName, collectionName, trackId, imgTrack);
+        //creating the new elements
+        var $li = $("<li/>");
+        
+        var $pName = $("<p/>");
+        var $pCollection = $("<p/>");
+        var $pIDtrack = $("<p/>");
+        var $pIndice = $("<p/>");
+        var $img = $("<img/>");
+        var $divImg= $("<div/>");
+        var $divPs= $("<div/>");
+        
+
+        //filling the new elements with the API data
+        $pName.text("Name of the track: "+ trackName);
+        $pCollection.text("Collection name: "+ collectionName);
+        $pIDtrack.text("Track ID: " + trackId);
+        $pIndice.text(contador++);
+        $img.attr("src",imgTrack);
+        
+        
+        //Adding classes for style
+        
+        $pIndice.addClass("col s1")
+        
+        $divPs.addClass("col s9")
+        $pName.addClass("title");
+        $img.addClass("responsive-img");
+        $divImg.addClass("col s2");
+        $li.addClass(" row collection-item");
+        
+        $ul.addClass("collection col s8");
+        
+        
+        //appending elements to the interface
+        $divImg.append($img);       
+        $divPs.append($pName);
+        $divPs.append($pCollection);
+        $divPs.append($pIDtrack);
+        $li.append($pIndice);
+        $li.append($divImg);
+        $li.append($divPs);      
+        
+    
+        $ul.append($li);
+        
+        
     })
 
-var printingData = function (generalData) {
-    console.log("entrando a printingData")
-
-    var trackName = generalData.trackName;
-    var collectionName = generalData.collectionName;
-    var trackId = generalData.trackId;
-    var img = generalData.artworkUrl60;
-    
-    
-    var musicContainer= document.getElementById("musicContainer");
-    var h5 = document.createElement('h5');
-    h5.innerText = trackName;
-    musicContainer.appendChild(h5);
 }
+
+
+
 
 
 $(document).ready(lodingPage);
