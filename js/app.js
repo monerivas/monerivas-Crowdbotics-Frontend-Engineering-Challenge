@@ -1,9 +1,9 @@
-var lodingPage= function(){
-    getingData();
+var lodingPage = function () {
+    getingDataPromisses();
 }
 
 
-var getingData= function(){
+/*var getingData= function(){
     var url= "https://itunes.apple.com/search?term=taylor+swift&limit=200"
     $.getJSON(url, function(response){
         var generalData= response.results;
@@ -21,11 +21,63 @@ var getingData= function(){
             $("#musicContainer").text(img);
         })
     });
+}*/
+
+/*var getingDataPromisses = function () {
+    $.get(url.results)
+        .then(function (response) {
+            var generalData = response.results;
+            console.log(generalData);
+        })
+}*/
+
+
+/*again*/
+var url = "https://itunes.apple.com/search?term=taylor+swift&limit=1"
+
+var getingDataPromisses = function (url) {
+    return new Promise(function (resolve, reject) {
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", url);
+        ajax.send();
+        ajax.onreadystatechange = function (data) {
+            if (ajax.readyState == 4) {
+                resolve(JSON.parse(ajax.responseText));
+            }
+        }
+    })
 }
 
+getingDataPromisses(url)
+    .then(function (response) {
+        var generalData = response.results;
+        console.log(generalData);
+        return generalData
+    })
+    .then(function (generalData) {
+        generalData.forEach(function (item) {
+            getingDataPromisses(generalData)
+                .then(function (generalData) {
+                    console.log(generalData + "second then")
+                    printingData(generalData);
+                })
+        })
+    })
 
+var printingData = function (generalData) {
+    console.log("entrando a printingData")
 
-
+    var trackName = generalData.trackName;
+    var collectionName = generalData.collectionName;
+    var trackId = generalData.trackId;
+    var img = generalData.artworkUrl60;
+    
+    
+    var musicContainer= document.getElementById("musicContainer");
+    var h5 = document.createElement('h5');
+    h5.innerText = trackName;
+    musicContainer.appendChild(h5);
+}
 
 
 $(document).ready(lodingPage);
@@ -39,4 +91,3 @@ Examples of the jasons that i get from the API of two traks with the same name
 {"wrapperType":"track", "kind":"music-video", "artistId":159260351, "collectionId":335627189, "trackId":335628615, "artistName":"Taylor Swift", "collectionName":"Fearless (Platinum Edition)", "trackName":"Love Story", "collectionCensoredName":"Fearless (Platinum Edition)", "trackCensoredName":"Love Story", "artistViewUrl":"https://itunes.apple.com/us/artist/taylor-swift/id159260351?uo=4", "collectionViewUrl":"https://itunes.apple.com/us/music-video/love-story/id335628615?uo=4", 
 "trackViewUrl":"https://itunes.apple.com/us/music-video/love-story/id335628615?uo=4", 
 "previewUrl":"https://video.itunes.apple.com/apple-assets-us-std-000001/Video/15/5a/90/mzm.ehjrwqvo..640x352.h264lc.u.p.m4v", "artworkUrl30":"http://is4.mzstatic.com/image/thumb/Video/v4/7f/71/7b/7f717bfd-63c5-922b-fc38-7cf28b959c17/source/30x30bb.jpg", "artworkUrl60":"http://is4.mzstatic.com/image/thumb/Video/v4/7f/71/7b/7f717bfd-63c5-922b-fc38-7cf28b959c17/source/60x60bb.jpg", "artworkUrl100":"http://is4.mzstatic.com/image/thumb/Video/v4/7f/71/7b/7f717bfd-63c5-922b-fc38-7cf28b959c17/source/100x100bb.jpg", "collectionPrice":14.99, "trackPrice":1.99, "releaseDate":"2009-01-01T08:00:00Z", "collectionExplicitness":"notExplicit", "trackExplicitness":"notExplicit", "discCount":1, "discNumber":1, "trackCount":30, "trackNumber":22, "trackTimeMillis":236485, "country":"USA", "currency":"USD", "primaryGenreName":"Country"}, */
-
