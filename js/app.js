@@ -58,17 +58,28 @@ var renderData = function (generalData) {
         $img.attr("src",imgTrack);
         
         
-        //Adding classes for style
-        
+        //Adding classes for style        
         $pIndice.addClass("col s1")
         
         $divPs.addClass("col s9")
-        $pName.addClass("title");
+        $pName.addClass("mg-0 title");       
+        $pCollection.addClass("mg-0"); 
+        $pIDtrack.addClass("mg-0"); 
+         
+
         $img.addClass("responsive-img");
         $divImg.addClass("col s2");
         $li.addClass(" row collection-item");
         
         $ul.addClass("collection col s8");
+        
+        $li.mouseover(function(){
+            $li.addClass("grey");
+        })
+        
+        $li.mouseleave(function(){
+            $li.removeClass("grey");
+        })
         
         
         //appending elements to the interface
