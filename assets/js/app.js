@@ -4,24 +4,10 @@ var lodingPage = function () {
 
 
 var getingData = function () {
-    var url = "https://itunes.apple.com/search?term=taylor+swift&limit=25"
+    var url = "https://itunes.apple.com/search?term=taylor+swift&limit=200"
     $.getJSON(url, function (response) {
         var generalData = response.results;
-        /*generalData.forEach( function(item){
-            var trackName= item.trackName;
-            var collectionName= item.collectionName;
-            var trackId= item.trackId;
-            var img= item.artworkUrl60;
-            
-            console.log(trackName,collectionName, trackId, img );
-            
-            $("#musicContainer").text(trackName);
-            $("#musicContainer").text(collectionName);
-            $("#musicContainer").text(trackId);
-            $("#musicContainer").text(img);
-            
-            renderData(generalData);
-        })*/
+        
         renderData(generalData);
     });
 }
