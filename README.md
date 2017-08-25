@@ -42,3 +42,8 @@ There are any restriction of the frameworks and libraries that we can use for th
 The deploy of the demo can be done at the gh-pages on GitHub?
 
 The content of “Other charts” section can be added from another source (like be written static on the html) or it needs to be from the iTunes API
+
+
+Final Question.
+Answer the question: is there anything else that is needed before this can be deployed to production?
+Yes I think the responsive interface should be improved and tested on different devices. Also the images should be the definitive ones. And most important, finish the requirements of functionality.
