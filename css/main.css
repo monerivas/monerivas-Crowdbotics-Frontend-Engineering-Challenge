@@ -1,6 +1,27 @@
+/*---Beginning of General Classes---*/
+.mg-0{
+    margin: 0;
+}
+
+.grey {
+    background-color: grey;
+}
+
+.blueText{
+    color: #00b0d9;
+    font-weight: 900;
+}
+/*---End of General Classes---*/
+
 nav {
     height: 15vh;
+    background-color:#704fba; 
 }
+
+.titlesNav h5{
+    margin: 0;
+    font-weight:900;
+} 
 
 #musicsection{
    padding-top: 15vh;
@@ -8,7 +29,7 @@ nav {
 
 #musicsection article{
     padding-top: 3vh;
-    background-color: #efefef;
+    background-color: #f7f7f7;
     
 }
 
